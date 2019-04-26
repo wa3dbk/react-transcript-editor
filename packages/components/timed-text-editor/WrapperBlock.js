@@ -1,5 +1,6 @@
 import React from 'react';
 import { EditorBlock, Modifier, EditorState, SelectionState } from 'draft-js';
+import VisibilitySensor from 'react-visibility-sensor';
 
 import SpeakerLabel from './SpeakerLabel';
 // import { shortTimecode, secondsToTimecode } from '../../Util/timecode-converter/';
@@ -102,12 +103,23 @@ class WrapperBlock extends React.Component {
 
     return (
       <div className={ style.WrapperBlock }>
-        <div className={ [ style.markers, style.unselectable ].join(' ') }
-          contentEditable={ false }>
-          {this.props.blockProps.showSpeakers ? speakerElement : ''}
+        <VisibilitySensor intervalCheck={ false } scrollCheck>
+          {
+            ({ isVisible }) =>
+              (
+                <div>
+                  { isVisible ? (
+                    <div className={ [ style.markers, style.unselectable ].join(' ') }
+                      contentEditable={ false }>
+                      {this.props.blockProps.showSpeakers ? speakerElement : ''}
 
-          {this.props.blockProps.showTimecodes ? timecodeElement : ''}
-        </div>
+                      {this.props.blockProps.showTimecodes ? timecodeElement : ''}
+                    </div>
+                  ) : <span>…</span> }
+                </div>
+              )
+          }
+        </VisibilitySensor>
         <div className={ style.text }>
           <EditorBlock { ...this.props } />
         </div>
