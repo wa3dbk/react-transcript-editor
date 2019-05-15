@@ -1,6 +1,6 @@
 import groupWordsInParagraphsBySpeakers from './group-words-by-speakers';
 
-import digitalPaperEditTranscript from './sample/digitalPaperEdit.sample.json';
+import digitalPaperEditTranscript from './sample/digitalPaperEdit.sample.json.js';
 
 const segmentation = digitalPaperEditTranscript.paragraphs;
 const words = digitalPaperEditTranscript.words;

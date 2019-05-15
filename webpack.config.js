@@ -22,6 +22,7 @@ module.exports = {
     timecodeConverter: './packages/util/timecode-converter/index.js',
     exportAdapter: './packages/export-adapters/index.js',
     sttJsonAdapter: './packages/stt-adapters/index.js',
+    DPEgroupWordsInParagraphsBySpeakers: './packages/stt-adapters/digital-paper-edit/group-words-by-speakers.js'
   },
   output: {
     path: path.resolve('dist'),
